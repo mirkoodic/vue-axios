@@ -9,13 +9,22 @@
 
 <div id="app">
 <div>{{status}}</div>
+<hr>
+<div></div>
+<table>
+  <tr v-for="x in j">
+    <td>{{ x.Name }}</td>
+    <td>{{ x.Country }}</td>
+  </tr>
+</table>
 </div>
 
 <script>
 myObject = new Vue({
   el: '#app',
   data: {
-  	status: ''
+  	status: '',
+    j:null
   },
   created: function()
   {
@@ -27,14 +36,24 @@ myObject = new Vue({
   methods: {
   	loaddata(){
   		this.status="loading...";
-        var wm = this;
+//https://www.w3schools.com/angular/customers.php
         axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
-        .then (function (response){
-        	wm.status = response.data[0]
-        })
-        .catch(function (error){
-        	wm.status = 'error: ' + error
-        })
+        .then (response =>{
+ 			this.status = response.data[0]
+ 			})
+        .catch(error =>{
+ 			console.log(error);
+ 		})
+        
+        
+        axios.get('https://www.w3schools.com/angular/customers.php')
+        .then (response =>{
+ 			this.j = response.data.records;
+ 			})
+        .catch(error =>{
+ 			console.log(error);
+ 		})
+        
   	}
   
   }
