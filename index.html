@@ -3,63 +3,64 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 <body>
 
-<h2>Axios</h2>
+    <h2>Axios</h2>
 
-<div id="app">
-<div>{{status}}</div>
-<hr>
-<div></div>
-<table>
-  <tr v-for="x in j">
-    <td>{{ x.Name }}</td>
-    <td>{{ x.Country }}</td>
-  </tr>
-</table>
-</div>
+    <div id="app">
+        <div>{{status}}</div>
+        <hr>
+        <div></div>
+        <table>
+            <tr v-for="x in j">
+                <td>{{ x.Name }}</td>
+                <td>{{ x.Country }}</td>
+            </tr>
+        </table>
+    </div>
 
-<script>
-myObject = new Vue({
-  el: '#app',
-  data: {
-  	status: '',
-    j:null
-  },
-  created: function()
-  {
-  	this.loaddata()
-  },
-  computed: {
-      
-  },
-  methods: {
-  	loaddata(){
-  		this.status="loading...";
+    <script>
+        myObject = new Vue({
+            el: '#app',
+            data: {
+                status: '',
+                j: null
+            },
+            created: function () {
+                this.loaddata()
+            },
+            computed: {
 
-        axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
-        .then (response =>{
- 			this.status = response.data[0]
- 			})
-        .catch(error =>{
- 			console.log(error);
- 		})
-        
-        //table data
-        //https://www.w3schools.com/angular/customers.php
-        axios.get('https://www.w3schools.com/angular/customers.php')
-        .then (response =>{
- 			this.j = response.data.records;
- 			})
-        .catch(error =>{
- 			console.log(error);
- 		})
-        
-  	}
-  
-  }
-});
-</script>
+            },
+            methods: {
+                loaddata() {
+                    this.status = "loading...";
+
+                    axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+                        .then(response => {
+                            this.status = response.data[0]
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+
+                    //table data
+                    //https://www.w3schools.com/angular/customers.php
+                    axios.get('https://www.w3schools.com/angular/customers.php')
+                        .then(response => {
+                            this.j = response.data.records;
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+
+                }
+
+            }
+        });
+    </script>
 
 </body>
+
 </html>
