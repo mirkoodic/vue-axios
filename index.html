@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<body>
+
+<h2>Axios</h2>
+
+<div id="app">
+<div>{{status}}</div>
+</div>
+
+<script>
+myObject = new Vue({
+  el: '#app',
+  data: {
+  	status: ''
+  },
+  created: function()
+  {
+  	this.loaddata()
+  },
+  computed: {
+      
+  },
+  methods: {
+  	loaddata(){
+  		this.status="loading...";
+  	}
+  
+  }
+});
+</script>
+
+</body>
+</html>
