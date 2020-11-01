@@ -36,7 +36,7 @@ myObject = new Vue({
   methods: {
   	loaddata(){
   		this.status="loading...";
-//https://www.w3schools.com/angular/customers.php
+
         axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
         .then (response =>{
  			this.status = response.data[0]
@@ -45,7 +45,8 @@ myObject = new Vue({
  			console.log(error);
  		})
         
-        
+        //table data
+        //https://www.w3schools.com/angular/customers.php
         axios.get('https://www.w3schools.com/angular/customers.php')
         .then (response =>{
  			this.j = response.data.records;
