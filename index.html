@@ -27,6 +27,14 @@ myObject = new Vue({
   methods: {
   	loaddata(){
   		this.status="loading...";
+        var wm = this;
+        axios.get('https://ron-swanson-quotes.herokuapp.com/v2/quotes')
+        .then (function (response){
+        	wm.status = response.data[0]
+        })
+        .catch(function (error){
+        	wm.status = 'error: ' + error
+        })
   	}
   
   }
